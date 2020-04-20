@@ -1,0 +1,110 @@
+%Defines a bunch of things, including paper size, font size, and type of writing
+\documentclass[letterpaper, 12pt]{article}
+%Sets the margin to 1 in for that cinematic view
+\usepackage[margin=1in]{geometry}
+%Symbols required to make equations
+\usepackage{amsmath}
+\usepackage{amssymb}
+%Adds color to text
+\usepackage{xcolor}
+%Allows you to add images
+\usepackage{graphicx}
+%Centers captions for images
+\usepackage[center]{caption}
+%Allows suport for hyperlinks
+\usepackage{hyperref}
+%Headers and footers
+\usepackage{fancyhdr}
+
+%First defining the pagestyle to the package that we just added (fancyhdr)
+\pagestyle{fancy}
+%Then reset the default fancy pagestyles
+\fancyhf{}
+%Defining our header
+\rhead{
+    Bob Joe
+    163 Minecraft PvP
+}
+%Defining out footer
+\rfoot{
+    %\thepage displays the current page number, so we add "Page" before that
+    Page \thepage
+}
+
+%This package makes it so that all paragraphs are indented first
+\usepackage{indentfirst}
+%Sets the paragraph indent length to 2 font widths
+\setlength{\parindent}{2em}
+
+%Begins the body of the document
+\begin{document}
+%Title, author, and date are all part of a "title"
+\title{Solving some random equation}
+\author{by Bob Joe}
+\date{19 April 2020}
+%You need maketitle, otherwise it will throw an error
+\maketitle
+
+%Section header
+\section{Intro}
+Hello, Bobby, that is a very good problem. John approached the problem by using cross-sections perpendicular to the $x-axis$, making semicircles as stated in your word problem. However, I think that another viable way to approach the problem is to use cross-sections perpendicular to the $y-axis$, which would then make full circles circles.
+
+%Section header
+\section{Solution}
+%Creates a place where you can write equations, also using & to align equations on different Lines.
+%\\ is newline while within an equation
+%\pm is plus or minus
+\begin{align}
+    \intertext{
+        I found that the equation of a circle with a radius of $10$ has an equation of
+    }
+    x^2+y^2 & =10^2
+    \intertext{Next, I wanted to make the equation of the circle in terms of $y$}
+    x^2+y^2 & =10^2               \\
+    x^2     & =10^2-y^2           \\
+    x       & =\pm\sqrt{10^2-y^2}
+    \intertext{For now, since the right side of a circle yields the same value as the left, we can just simplify the $\pm$ to $2$}
+    x       & =2\sqrt{10^2-y^2}
+\end{align}
+Like John, I then made a desmos graph to visualize the problem. \par
+%To insert an image, use \begin{figure}. The [h] stands for "here"
+\begin{figure}[h]
+    %Centers the image
+    \begin{center}
+        %Includegraphics actually adds the image in
+        \includegraphics[scale=.3]{breadContainer.png}
+        %href and textcolor fall under the template of \some_Command{attribute}{actual text}
+        \caption{\textit{Bread Container.} Desmos link \href{https://www.desmos.com/calculator/lit7eutdys}{\textcolor{blue}{here}}, also see embed below}
+    \end{center}
+\end{figure}
+%\boxed{} creates a box around the specified objects.
+%The symbol for an integral is \int, _ is undercase, and ^ is upper case, so integrals are in the format \int_{a}^{b}
+\begin{align}
+    \intertext{We can define the $A(x)$ function of a circle in terms of $r$}
+    A(r)                          & =\pi r^2
+    \intertext{Keep in mind that the radius is half the horizontal}
+    r                             & = \frac{1}{2}x
+    \intertext{Substitute $x$ with our equation of the circle, which simplifies things}
+                                  & = \frac{1}{2}(2\sqrt{10^2-y^2})                                                                                                     \\
+                                  & = \sqrt{10^2-y^2}
+    \intertext{Now we can substitute the $r$ in $A(r)$ to get $A(y)$}
+    A(y)                          & =\pi (\sqrt{10^2-y^2}
+    )^2                                                                                                                                                                 \\
+                                  & =\boxed{\pi(10^2-y^2)}
+    \intertext{Since the container is a semicircle, the bottom is $0$ and the top is $r$}
+    r                             & = 10                                                                                                                                \\
+    a                             & = \boxed{0}                                                                                                                         \\
+    b                             & = r                                                                                                                                 \\
+                                  & = \boxed{10}
+    \intertext{Now, we can just integrate the area function from $0$ to $10$ to get our volume!}
+    \int_{a}^{b}A\left(y\right)dy & =\int_{0}^{10}\pi(10^{2}-y^{2})dy                                                                                                   \\
+                                  & =\pi\int_{0}^{10}(10^{2}-y^{2})dy                                                                                                   \\
+                                  & =\pi\left(10^{2}y-\frac{y^{3}}{3}\right)\Big|_{0}^{10}                                                                              \\
+                                  & =\pi\left(10^{2}\left(10\right)-\frac{\left(10\right)^{3}}{3}-\left(10^{2}\left(0\right)-\frac{\left(0\right)^{3}}{3}\right)\right) \\
+                                  & =\pi\left(10^{2}\left(10\right)-\frac{\left(10\right)^{3}}{3}\right)                                                                \\
+                                  & \approx 666.67\pi                                                                                                                   \\
+                                  & \approx \boxed{2094.40cm^3}                                                                                                         \\
+\end{align}
+\section{Conclusion}
+Compared to Joe's solution, I found it very interesting how in step 16 our integrals looked nearly identical to each other, disregarding the differences between $y$ and $x$. Looking at all the steps, I've made the conclusion that solving $dy$ and $dx$ is about the same difficulty and efficiency. However, $dx$ could definitely take more steps if you do not recognize that $\int_{-10}^{10}$ can be rewritten as $2\int_{0}^{10}$. I also find that doing circular cross-sections are slightly more intuitive. What do you think?
+\end{document}
